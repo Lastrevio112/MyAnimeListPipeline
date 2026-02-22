@@ -1,0 +1,71 @@
+{
+  "name": "MyAnimeListProject",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
+  "workspaceFolder": "/workspace",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // DBT extensions
+        "dbt-labs.dbt-power-user",
+        "Fivetran.dbt-language-server",
+
+        // Python and Jupyter
+        "ms-python.python",
+        "ms-python.pylance",
+        "ms-toolsai.jupyter",
+        "ms-toolsai.jupyter-renderers",
+
+        // SQL
+        "mtxr.sqltools",
+        "evidence.sqltools-duckdb-driver",
+
+        // Git and GitHub
+        "eamodio.gitlens",
+        "GitHub.vscode-pull-request-github",
+
+        // General quality of life
+        "ms-azuretools.vscode-docker",
+        "esbenp.prettier-vscode",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml"
+      ],
+      "settings": {
+        // Python settings — point to the container's Python
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.terminal.activateEnvironment": false,
+
+        // DBT Power User settings
+        "dbt.dbtPythonPathOverride": "/usr/local/bin/python",
+        "dbt.projectsDir": "/workspace/dbt",
+
+        // Jupyter settings
+        "jupyter.notebookFileRoot": "/workspace",
+        "jupyter.kernels.filter": [],
+
+        // Terminal should open at workspace root
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.cwd": "/workspace",
+
+        // SQLTools DuckDB connection
+        "sqltools.connections": [
+          {
+            "name": "DuckDB Local",
+            "driver": "DuckDB",
+            "database": "/workspace/data/pipeline.duckdb"
+          }
+        ]
+      }
+    }
+  },
+
+  // Forward port 8888 so you can also open Jupyter in a browser if you want
+  "forwardPorts": [8888],
+
+  // Run after the container starts
+  "postStartCommand": "echo 'Container ready! Run dbt debug in dbt/ to verify setup.'",
+
+  // Run once after the container is created for the first time
+  "postCreateCommand": "cd /workspace/dbt && dbt deps"
+}

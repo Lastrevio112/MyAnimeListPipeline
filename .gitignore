@@ -1,0 +1,32 @@
+# DuckDB files (large binary files)
+*.duckdb
+*.duckdb.wal
+
+# DBT
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/settings.json
+
+# Environment files
+.env
+*.env
+
+# Docker volumes (managed by Docker, not Git)
+.docker/
+
+# OS files
+.DS_Store
+Thumbs.db

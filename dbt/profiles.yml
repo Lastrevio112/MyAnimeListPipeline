@@ -1,0 +1,10 @@
+pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /workspace/data/pipeline.duckdb
+      threads: 16
+      extensions:
+        - httpfs
+        - parquet
