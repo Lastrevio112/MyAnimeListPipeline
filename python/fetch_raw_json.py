@@ -1,6 +1,6 @@
 #This script fetches raw JSON data from Jikan API.
 #It will generate a new batch folder for each run. 
-#This is because want to refresh the data from time to time but also not delete or modify historical data in the 'bronze' layer of the architecture.
+#This is because we want to refresh the data from time to time but also not delete or modify historical data in the 'bronze' layer of the architecture.
 
 import httpx
 import json
