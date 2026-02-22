@@ -68,14 +68,24 @@ def fetch_new_importbatch() -> None:
         cur_anime = fetch_page(page)
         tries += 1
         
-    tries = 0
-    while has_enough_members(cur_anime) and tries < 20:
+    if cur_anime is None:
+        logger.error(f"Failed to fetch page {page} after 20 tries. Stopping.")
+        return
+        
+    while has_enough_members(cur_anime):
         with open(batch_folder / f"page_{page}.json", "w") as f:
             json.dump(cur_anime, f, indent=2)
         logger.info(f"Saved page {page} to {batch_folder}")
         page += 1
         time.sleep(SLEEP_SECONDS)
         cur_anime = fetch_page(page)
+
+        tries = 0
+        while cur_anime is None and tries < 20:
+            logger.warning(f"Skipping page {page} due to fetch error.")
+            time.sleep(SLEEP_SECONDS)
+            cur_anime = fetch_page(page)
+            tries += 1
         
     
 #Loads a specific batch in the importbatches folder into the raw.api_data table in DuckDB.
@@ -123,6 +133,7 @@ def load_missing_batches():
     con = duckdb.connect('/workspace/data/pipeline.duckdb')
     result = con.execute("SELECT DISTINCT batch_id FROM raw.api_data").fetchall()
     batches_in_duckdb = [row[0] for row in result]
+    con.close()
 
     missing_batches = [x for x in batches_in_importbatches if x not in batches_in_duckdb]
     
@@ -134,8 +145,7 @@ def load_missing_batches():
     if (not loaded_at_least_one_new_batch):
         logger.info("No new batches to load. All batches in importbatches are already in DuckDB.")
 
-    con.close()
-
+    
 if __name__ == "__main__":
     fetch_new_importbatch()
     load_missing_batches()
