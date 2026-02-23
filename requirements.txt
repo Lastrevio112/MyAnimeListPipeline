@@ -1,7 +1,7 @@
 # Core data tools
 duckdb==1.2.0
 pandas==2.2.2
-polars==0.20.31
+polars==1.38.1
 pyarrow==16.1.0
 
 # DBT with DuckDB adapter
