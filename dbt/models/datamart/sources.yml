@@ -1,0 +1,58 @@
+sources:
+  - name: curated
+    schema: curated
+    tables:
+      - name: anime
+        columns: 
+          - name: anime_id
+            tests:
+              - unique
+              - not_null
+      - name: links_anime_genres
+        columns: 
+          - name: anime_id
+            tests:
+              - not_null
+          - name: genre_id
+            tests:
+              - not_null
+      - name: links_anime_themes
+        columns: 
+          - name: anime_id
+            tests:
+              - not_null
+          - name: theme_id
+            tests:
+              - not_null
+      - name: links_anime_demographics
+        columns: 
+          - name: anime_id
+            tests:
+              - not_null
+          - name: demographic_id
+            tests:
+              - not_null
+      - name: links_anime_studios
+        columns: 
+          - name: anime_id
+            tests:
+              - not_null
+          - name: studio_id
+            tests:
+              - not_null
+      - name: links_anime_producers
+        columns: 
+          - name: anime_id
+            tests:
+              - not_null
+          - name: producer_id
+            tests:
+              - not_null
+      - name: links_anime_licensors
+        columns: 
+          - name: anime_id
+            tests:
+              - not_null
+          - name: licensor_id
+            tests:
+              - not_null

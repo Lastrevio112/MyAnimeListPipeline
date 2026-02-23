@@ -19,6 +19,8 @@ clean-targets:
 models:
   duckdb_queries:
     materialized: ephemeral
+  datamart:
+    materialized: table
 
 
   
