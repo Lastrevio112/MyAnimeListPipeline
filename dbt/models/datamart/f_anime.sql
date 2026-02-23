@@ -36,5 +36,6 @@ WITH CTE AS (
     LEFT JOIN {{ ref('d_statuses') }} ds ON a.status = ds.status        --we join here on strings since the IDs were generated with ROW_NUMBER() based on the strings themselves
     LEFT JOIN {{ ref('d_types') }} dty ON a.type = dty.type
     LEFT JOIN {{ ref('d_sources') }} dsrc ON a.source = dsrc.source
+    WHERE a.batch_id = (SELECT MAX(batch_id) FROM curated.anime)  --only take the latest batch of data
 )
 SELECT * FROM CTE
