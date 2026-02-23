@@ -17,10 +17,12 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  duckdb_queries:
-    materialized: ephemeral
-  datamart:
-    materialized: table
+  pipeline:
+    duckdb_queries:
+      materialized: ephemeral
+    datamart:
+      materialized: table
+      schema: datamart
 
 
   
