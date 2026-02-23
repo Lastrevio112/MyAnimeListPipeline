@@ -7,29 +7,21 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        // DBT extensions
         "dbt-labs.dbt-power-user",
         "Fivetran.dbt-language-server",
-
-        // Python and Jupyter
         "ms-python.python",
         "ms-python.pylance",
         "ms-toolsai.jupyter",
         "ms-toolsai.jupyter-renderers",
-
-        // SQL
         "mtxr.sqltools",
         "evidence.sqltools-duckdb-driver",
-
-        // Git and GitHub
         "eamodio.gitlens",
         "GitHub.vscode-pull-request-github",
-
-        // General quality of life
         "ms-azuretools.vscode-docker",
         "esbenp.prettier-vscode",
         "redhat.vscode-yaml",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "innoverio.vscode-dbt-power-user"
       ],
       "settings": {
         // Python settings — point to the container's Python
