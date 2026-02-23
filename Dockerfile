@@ -30,7 +30,7 @@ RUN apt-get update && apt-get install -y nodejs npm
 RUN npm install -g duckdb-async@0.10.2
 
 # Install DuckDB CLI
-RUN curl -fsSL https://github.com/duckdb/duckdb/releases/download/v1.2.0/duckdb_cli-linux-amd64.zip -o /tmp/duckdb.zip \
+RUN curl -fsSL https://github.com/duckdb/duckdb/releases/download/v1.4.0/duckdb_cli-linux-amd64.zip -o /tmp/duckdb.zip \
     && apt-get install -y unzip \
     && unzip /tmp/duckdb.zip -d /tmp/ \
     && mv /tmp/duckdb /usr/local/bin/duckdb \
