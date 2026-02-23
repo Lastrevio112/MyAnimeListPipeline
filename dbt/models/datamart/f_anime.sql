@@ -16,6 +16,10 @@ WITH CTE AS (
                 THEN CAST(SPLIT_PART(a.duration, ' min', 1) AS INTEGER)
             WHEN a.duration LIKE '%sec%'
                 THEN CAST(SPLIT_PART(a.duration, ' sec', 1) AS FLOAT) / 60.0
+            WHEN a.duration LIKE '%hr%'
+                THEN CAST(SPLIT_PART(a.duration, ' hr', 1) AS INTEGER) * 60
+            WHEN a.duration LIKE '%Unknown%' 
+                THEN NULL
             ELSE NULL
         END AS duration_minutes_per_episode,   --only God knows how this column is created
         a.score,
