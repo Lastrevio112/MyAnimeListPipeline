@@ -44,7 +44,7 @@ In this way, we avoid duplicates and data in the curated schema stays fresh with
 
 The curated schema has a main "anime" table which is a flattened version of the raw JSONs from the raw table, with array-type columns removed. It also contains "links" tables to demograhics, genres, licensors, producers, studios and themes data. This is because the relation between an anime and any of those beforementioned data points is many-to-many (one anime has more genres, one genre is had by multiple animes), therefore needing a linking table so that the anime_id column remains unique in the anime table.
 
-## Stage 3: Silver (curated) to Bronze (datamart)
+## Stage 3: Silver (curated) to Gold (datamart)
 
 This is a star schema, ready to be used by BI models, created in DBT under dbt/models/datamart. The materialization type of those models is table, for faster reads and up-to-date data. 
 
