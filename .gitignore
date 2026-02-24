@@ -1,7 +1,3 @@
-# DuckDB files (large binary files)
-*.duckdb.wal
-duckdb.zip
-
 # DBT
 dbt/target/
 dbt/dbt_packages/
