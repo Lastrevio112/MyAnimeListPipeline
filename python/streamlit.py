@@ -45,6 +45,8 @@ df_enriched = df_enriched.merge(data['d_types'], on='type_id', how='left')
 df_enriched = df_enriched.merge(data['d_statuses'], on='status_id', how='left')
 df_enriched = df_enriched.merge(data['links_licensors'], on='anime_id', how='left')
 df_enriched = df_enriched.merge(data['d_licensors'], on='licensor_id', how='left')
+df_enriched = df_enriched.merge(data['links_genres'], on='anime_id', how='left')
+df_enriched = df_enriched.merge(data['d_genres'], on='genre_id', how='left')
 
 # --- STREAMLIT UI ---
 
@@ -80,7 +82,7 @@ with col1:
         y="members", 
         size="favorites", 
         hover_name="title_english",
-        color="genre",
+        color="genre_name",
         title="Score vs. Member Count (Bubble size = Favorites)",
         labels={"score": "User Score", "members": "Total Members"},
         template="plotly_dark"
