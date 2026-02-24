@@ -12,6 +12,8 @@ DBT was used for creating and handling the gold (datamart) layer of the architec
 
 The front-end dashboarding was handled with the Streamlit Python library.
 
+LINK TO STREAMLIT APP: https://myanimelistpipeline.streamlit.app/
+
 ## Repo structure
 
 DBT configuration yaml files can be found in the dbt folder of this project with the models under the models sub-folder.
