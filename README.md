@@ -1,12 +1,16 @@
 # My Anime List API end-to-end ELT pipeline | (Polars, DBT, DuckDB, Docker)
 
-This is an end-to-end ELT pipeline that fethes data from the public "JikanAPI" (the API of MyAnimeList website) about the most popular ~10 000 animes and creates a medallion-like architecture in a DuckDB warehouse. 
+This is an end-to-end ELT pipeline that fethes data from the public "JikanAPI" (the API of MyAnimeList website) about the most popular ~10 000 animes and creates a medallion-like architecture in a DuckDB warehouse to be analyzed with Streamlit.
+
+The project tries to answer the question: "What makes an anime popular?"
 
 This project handles API rate limits, de-duplication, testing and upsert logic with next to no human intervention.
 
 Python (with Polars dataframes) was used for API requests as well as loading data into the bronze (raw) and silver (curated) layers of the architecture. 
 
 DBT was used for creating and handling the gold (datamart) layer of the architecture. DuckDB was used as a warehouse for this project and the entire project was containarized in Docker.
+
+The front-end dashboarding was handled with the Streamlit Python library.
 
 ## Repo structure
 
@@ -44,3 +48,7 @@ This is a star schema, ready to be used by BI models, created in DBT under dbt/m
 
 This model has a main fact table (f_anime) in a one-to-many relationship with three dimension tables (d_sources, d_statuses and d_types) as well as in a many to many relationship with six other dimension tables (d_demographics, d_genres, d_licensors, d_producers, d_studios, d_themes). 
 The many to many relations were handled by linkage tables ("links_genres", etc.).
+
+## Final stage: front-end/visualization
+
+Streamlit was used for creating interactive charts about what drives an anime's popularity. The script can be found in /python/streamlit.py
