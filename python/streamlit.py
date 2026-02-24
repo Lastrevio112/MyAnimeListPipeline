@@ -79,7 +79,7 @@ with col1:
         x="score", 
         y="members", 
         size="favorites", 
-        hover_name="title",
+        hover_name="title_english",
         color="type",
         title="Score vs. Member Count (Bubble size = Favorites)",
         labels={"score": "User Score", "members": "Total Members"},
