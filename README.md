@@ -1,4 +1,4 @@
-# My Anime List API end-to-end ELT pipeline | (Polars, DBT, DuckDB, Docker)
+# My Anime List API end-to-end ELT pipeline | (Polars, DBT, DuckDB, Docker, Streamlit)
 
 This is an end-to-end ELT pipeline that fethes data from the public "JikanAPI" (the API of MyAnimeList website) about the most popular ~10 000 animes and creates a medallion-like architecture in a DuckDB warehouse to be analyzed with Streamlit.
 
