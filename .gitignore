@@ -1,5 +1,4 @@
 # DuckDB files (large binary files)
-*.duckdb
 *.duckdb.wal
 duckdb.zip
 

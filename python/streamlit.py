@@ -4,6 +4,8 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
+DUCKDB_PATH = "pipeline.duckdb"  # Comitted the entire database into a seperate folder seperate from the VS Code dev container so I can deploy this on streamlit
+
 # 1. Cache the data so it doesn't reload on every click
 @st.cache_data
 def load_all_tables(db_path):
@@ -25,10 +27,10 @@ def load_all_tables(db_path):
     
     return tables
 
-information_schema = duckdb.connect('/workspace/data/pipeline.duckdb', read_only=True).execute("SELECT * FROM information_schema.columns").fetchdf()
+information_schema = duckdb.connect(DUCKDB_PATH, read_only=True).execute("SELECT * FROM information_schema.columns").fetchdf()
 
 # Load everything into a single dictionary
-data = load_all_tables('/workspace/data/pipeline.duckdb')
+data = load_all_tables(DUCKDB_PATH)
 
 
 # --- DATA PREPARATION (Joining Dimensions) ---
