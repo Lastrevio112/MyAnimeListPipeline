@@ -52,3 +52,14 @@ The many to many relations were handled by linkage tables ("links_genres", etc.)
 ## Final stage: front-end/visualization
 
 Streamlit was used for creating interactive charts about what drives an anime's popularity. The script can be found in /python/streamlit.py
+
+Here are some screenshots from the end result:
+<img width="841" height="715" alt="image" src="https://github.com/user-attachments/assets/02446e59-702c-4d9a-bf1e-84d20b558ca7" />
+<img width="787" height="542" alt="image" src="https://github.com/user-attachments/assets/b8379f17-9324-4331-8c5d-058144fd96ea" />
+<img width="825" height="570" alt="image" src="https://github.com/user-attachments/assets/31aea106-43ab-4d71-961d-8891390e690c" />
+<img width="853" height="466" alt="image" src="https://github.com/user-attachments/assets/b063d90d-82ef-4e73-9542-46be463b6c9f" />
+<img width="794" height="591" alt="image" src="https://github.com/user-attachments/assets/21988898-3c32-4425-acae-fa83afadb0b2" />
+<img width="1919" height="877" alt="image" src="https://github.com/user-attachments/assets/644c1beb-bb20-41af-b43c-a003ce6ccb7a" />
+
+
+
