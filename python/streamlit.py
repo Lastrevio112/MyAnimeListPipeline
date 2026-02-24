@@ -80,7 +80,7 @@ with col1:
         y="members", 
         size="favorites", 
         hover_name="title_english",
-        color="type",
+        color="genre",
         title="Score vs. Member Count (Bubble size = Favorites)",
         labels={"score": "User Score", "members": "Total Members"},
         template="plotly_dark"
