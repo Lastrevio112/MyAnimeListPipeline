@@ -50,7 +50,7 @@ df_enriched = df_enriched.merge(data['d_genres'], on='genre_id', how='left')
 
 # --- STREAMLIT UI ---
 
-st.title("Anime Popularity Datamart Explorer")
+st.title("Anime Popularity Explorer")
 st.markdown("Analyzing what drives success in the anime industry.")
 
 # Sidebar Filters
