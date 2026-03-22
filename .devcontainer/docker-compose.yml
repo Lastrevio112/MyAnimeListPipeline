@@ -51,7 +51,15 @@ services:
 
   airflow-init:
     <<: *airflow-common
-    command: bash -c "airflow db init && airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com"
+    user: root
+    command: bash -c "
+      chmod -R 777 /workspace/importbatches &&
+      chmod -R 777 /workspace/data &&
+      chmod -R 777 /workspace/dbt/logs &&
+      chmod -R 777 /workspace/dbt/target &&
+      chmod -R 777 /workspace/ &&
+      airflow db init &&
+      airflow users create --username admin --password admin --firstname Admin --lastname User --role Admin --email admin@example.com"
     restart: on-failure
 
   airflow-webserver:
@@ -68,4 +76,8 @@ services:
 
 volumes:
   duckdb_data:
+    external: true
+    name: myanimelistproject_devcontainer_duckdb_data
   postgres_data:
+    external: true
+    name: myanimelistproject_devcontainer_postgres_data

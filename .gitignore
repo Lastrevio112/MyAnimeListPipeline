@@ -29,3 +29,6 @@ Thumbs.db
 
 # Raw data
 importbatches
+
+# Logs
+logs
