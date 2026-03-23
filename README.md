@@ -1,4 +1,4 @@
-# My Anime List API end-to-end ELT pipeline | (Polars, DBT, DuckDB, Docker, Streamlit)
+# My Anime List API end-to-end ELT pipeline | (Polars, DBT, DuckDB, Docker, Airflow, Streamlit)
 
 This is an end-to-end ELT pipeline that fethes data from the public "JikanAPI" (the API of MyAnimeList website) about the most popular ~7 000 animes and creates a medallion-like architecture in a DuckDB warehouse to be analyzed with Streamlit.
 
@@ -9,6 +9,8 @@ This project handles API rate limits, de-duplication, testing and upsert logic w
 Python (with Polars dataframes) was used for API requests as well as loading data into the bronze (raw) and silver (curated) layers of the architecture. 
 
 DBT was used for creating and handling the gold (datamart) layer of the architecture. DuckDB was used as a warehouse for this project and the entire project was containarized in Docker.
+
+Airflow was used to orchestrate the order in which tasks should run and schedule them to run every month in order to refresh historical data.
 
 The front-end dashboarding was handled with the Streamlit Python library.
 
@@ -23,6 +25,8 @@ Jupyter notebooks can be found under the notebooks folder and Python scripts und
 .devcontainer folder was used for configuring Docker "dev containers" in VS Code. The Dockerfile is at the root of the repo.
 
 Raw data is stored in importbatches and the DuckDB database under data.
+
+Airflow-related files are in the dags folder.
 
 ## Stage 1: API to Bronze (raw)
 
