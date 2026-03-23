@@ -4,7 +4,7 @@ import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go
 
-DUCKDB_PATH = "pipeline.duckdb"  # Comitted the entire database into a seperate folder seperate from the VS Code dev container so I can deploy this on streamlit
+DUCKDB_PATH = "datamart_export.duckdb"  # Comitted the entire database into a seperate folder seperate from the VS Code dev container so I can deploy this on streamlit
 
 # 1. Cache the data so it doesn't reload on every click
 @st.cache_data

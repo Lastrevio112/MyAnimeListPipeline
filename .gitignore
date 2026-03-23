@@ -32,3 +32,6 @@ importbatches
 
 # Logs
 logs
+
+# Docker volume data
+data

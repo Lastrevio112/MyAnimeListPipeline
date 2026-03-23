@@ -17,12 +17,6 @@ def run_notebook():
         kernel_name='python3'
     )
 
-def copy_duckdb():
-    shutil.copyfile(
-        '/workspace/data/pipeline.duckdb',
-        '/workspace/pipeline.duckdb'
-    )
-
 with DAG(
     dag_id='myanimelist_pipeline',
     default_args=default_args,
@@ -53,9 +47,9 @@ with DAG(
         bash_command='cd /workspace/dbt && dbt run',
     )
 
-    copy_db = PythonOperator(
+    copy_db = BashOperator(
         task_id='copy_duckdb',
-        python_callable=copy_duckdb,
+        bash_command="python /workspace/python/datamart_export_to_file.py",
     )
 
     fetch_raw >> load_bronze >> load_curated >> run_dbt >> copy_db
